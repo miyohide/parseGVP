@@ -5,6 +5,29 @@ RSpec.describe ParseGVP do
     expect(parser.simple_result).to eq("current: 2, exceeded: 0, outdated: 10, unresolved: 0")
   end
 
+  it "Output Detail Result" do
+    parser = ParseGVP::Parser.new
+    parser.call(GVP_JSON)
+    expect(parser.detail_result).to eq(<<RESULT)
+- current: 2
+  - com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.21.0
+  - com.ninja-squad:DbSetup:2.1.0
+- exceeded: 0
+- outdated: 10
+  - com.h2database:h2
+  - org.flywaydb:flyway-core
+  - org.projectlombok:lombok
+  - org.springframework.boot:spring-boot-devtools
+  - org.springframework.boot:spring-boot-gradle-plugin
+  - org.springframework.boot:spring-boot-starter-jdbc
+  - org.springframework.boot:spring-boot-starter-security
+  - org.springframework.boot:spring-boot-starter-test
+  - org.springframework.boot:spring-boot-starter-thymeleaf
+  - org.springframework.boot:spring-boot-starter-web
+- unresolved: 0
+RESULT
+  end
+
   GVP_JSON = <<-JSON
 {
     "current": {
