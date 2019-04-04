@@ -18,17 +18,21 @@ module ParseGVP
 
     def detail_result
       results = []
-      results << %Q(- current: #{@json["current"]["count"]})
+      results << count_line("current")
       results << @json["current"]["dependencies"].map do |i|
         %Q(  - #{i["group"]}:#{i["name"]}:#{i["version"]})
       end.join("\n")
-      results << %Q(- exceeded: #{@json["exceeded"]["count"]})
+      results << count_line("exceeded")
       results << lib_details("exceeded")
-      results << %Q(- outdated: #{@json["outdated"]["count"]})
+      results << count_line("outdated")
       results << lib_details("outdated")
-      results << %Q(- unresolved: #{@json["unresolved"]["count"]})
+      results << count_line("unresolved")
       results << lib_details("unresolved")
       results.delete_if(&:empty?).join("\n") + "\n"
+    end
+
+    def count_line(type)
+      "- #{type}: #{@json[type]['count']}"
     end
 
     def lib_details(type)
