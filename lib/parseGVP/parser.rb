@@ -18,14 +18,10 @@ module ParseGVP
 
     def detail_result
       results = []
-      results << count_line("current")
-      results << lib_details("current")
-      results << count_line("exceeded")
-      results << lib_details("exceeded")
-      results << count_line("outdated")
-      results << lib_details("outdated")
-      results << count_line("unresolved")
-      results << lib_details("unresolved")
+      ["current", "exceeded", "outdated", "unresolved"].each do |item|
+        results << count_line(item)
+        results << lib_details(item)
+      end
       results.delete_if(&:empty?).join("\n") + "\n"
     end
 
