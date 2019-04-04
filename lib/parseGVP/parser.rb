@@ -23,18 +23,22 @@ module ParseGVP
         %Q(  - #{i["group"]}:#{i["name"]}:#{i["version"]})
       end.join("\n")
       results << %Q(- exceeded: #{@json["exceeded"]["count"]})
-      results << @json["exceeded"]["dependencies"].map do |i|
-        %Q(  - #{i["group"]}:#{i["name"]})
-      end.join("\n")
+      results << lib_details("exceeded")
       results << %Q(- outdated: #{@json["outdated"]["count"]})
-      results << @json["outdated"]["dependencies"].map do |i|
-        %Q(  - #{i["group"]}:#{i["name"]})
-      end.join("\n")
+      results << lib_details("outdated")
       results << %Q(- unresolved: #{@json["unresolved"]["count"]})
-      results << @json["unresolved"]["dependencies"].map do |i|
-        %Q(  - #{i["group"]}:#{i["name"]})
-      end.join("\n")
+      results << lib_details("unresolved")
       results.delete_if(&:empty?).join("\n") + "\n"
+    end
+
+    def lib_details(type)
+      @json[type]["dependencies"].map do |i|
+        lib_detail(i)
+      end.join("\n")
+    end
+
+    def lib_detail(item)
+      "  - #{item['group']}:#{item['name']}"
     end
 
     private
