@@ -19,9 +19,7 @@ module ParseGVP
     def detail_result
       results = []
       results << count_line("current")
-      results << @json["current"]["dependencies"].map do |i|
-        %Q(  - #{i["group"]}:#{i["name"]}:#{i["version"]})
-      end.join("\n")
+      results << lib_details("current")
       results << count_line("exceeded")
       results << lib_details("exceeded")
       results << count_line("outdated")
@@ -37,8 +35,17 @@ module ParseGVP
 
     def lib_details(type)
       @json[type]["dependencies"].map do |i|
-        lib_detail(i)
+        case type
+        when "current"
+          lib_current_detail(i)
+        else
+          lib_detail(i)
+        end
       end.join("\n")
+    end
+
+    def lib_current_detail(item)
+      "  - #{item['group']}:#{item['name']}:#{item['version']}"
     end
 
     def lib_detail(item)
