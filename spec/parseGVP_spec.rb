@@ -14,16 +14,16 @@ RSpec.describe ParseGVP do
   - com.ninja-squad:DbSetup:2.1.0
 - exceeded: 0
 - outdated: 10
-  - com.h2database:h2
-  - org.flywaydb:flyway-core
-  - org.projectlombok:lombok
-  - org.springframework.boot:spring-boot-devtools
-  - org.springframework.boot:spring-boot-gradle-plugin
-  - org.springframework.boot:spring-boot-starter-jdbc
-  - org.springframework.boot:spring-boot-starter-security
-  - org.springframework.boot:spring-boot-starter-test
-  - org.springframework.boot:spring-boot-starter-thymeleaf
-  - org.springframework.boot:spring-boot-starter-web
+  - com.h2database:h2 (1.4.197 -> 1.4.199)
+  - org.flywaydb:flyway-core (5.2.3 -> 6.0.0-beta)
+  - org.projectlombok:lombok (1.18.4 -> 1.18.6)
+  - org.springframework.boot:spring-boot-devtools (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - org.springframework.boot:spring-boot-gradle-plugin (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - org.springframework.boot:spring-boot-starter-jdbc (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - org.springframework.boot:spring-boot-starter-security (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - org.springframework.boot:spring-boot-starter-test (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - org.springframework.boot:spring-boot-starter-thymeleaf (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - org.springframework.boot:spring-boot-starter-web (2.1.1.RELEASE -> 2.1.3.RELEASE)
 - unresolved: 0
 RESULT
   end
