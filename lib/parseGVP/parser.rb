@@ -45,7 +45,7 @@ module ParseGVP
     end
 
     def lib_detail(item)
-      "  - #{item['group']}:#{item['name']} (#{current_version(item)} -> #{new_version(item)})"
+      "  - [#{item['group']}:#{item['name']}](#{item['projectUrl']}) (#{current_version(item)} -> #{new_version(item)})"
     end
 
     private
