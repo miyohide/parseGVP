@@ -45,12 +45,20 @@ module ParseGVP
     end
 
     def lib_detail(item)
-      "  - #{item['group']}:#{item['name']} (#{item['version']} -> #{item['available']['milestone']})"
+      "  - #{item['group']}:#{item['name']} (#{current_version(item)} -> #{new_version(item)})"
     end
 
     private
     def parse_json
       @json = JSON.parse(@json)
+    end
+
+    def current_version(item)
+      item['version']
+    end
+
+    def new_version(item)
+      item['available']['milestone']
     end
   end
 end
