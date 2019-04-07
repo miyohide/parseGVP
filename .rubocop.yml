@@ -1,1 +1,4 @@
+# 文字列のクオートはどちらでも良い
+Style/StringLiterals:
+  Enabled: false
 inherit_from: .rubocop_todo.yml
