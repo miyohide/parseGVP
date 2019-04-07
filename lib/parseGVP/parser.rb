@@ -41,7 +41,7 @@ module ParseGVP
     end
 
     def lib_current_detail(item)
-      "  - #{libname(item)}:#{item['version']}"
+      "  - #{libname(item)}:#{current_version(item)}"
     end
 
     def lib_detail(item)
