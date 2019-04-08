@@ -12,7 +12,7 @@ module ParseGVP
 
     def simple_result
       ["current", "exceeded", "outdated", "unresolved"].map do |item|
-        "#{item}: #{@json[item]["count"]}"
+        "#{item}: #{@json[item]['count']}"
       end.join(", ")
     end
 
