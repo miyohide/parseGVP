@@ -11,11 +11,9 @@ module ParseGVP
     end
 
     def simple_result
-      current = @json["current"]["count"]
-      exceeded = @json["exceeded"]["count"]
-      outdated = @json["outdated"]["count"]
-      unresolved = @json["unresolved"]["count"]
-      "current: #{current}, exceeded: #{exceeded}, outdated: #{outdated}, unresolved: #{unresolved}"
+      ["current", "exceeded", "outdated", "unresolved"].map do |item|
+        "#{item}: #{@json[item]["count"]}"
+      end.join(", ")
     end
 
     def detail_result
