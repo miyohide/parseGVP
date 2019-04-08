@@ -1,6 +1,8 @@
 require "json"
 
+# Gradle Versions Pluginが出力するJSONを解析する
 module ParseGVP
+  # Gradle Versions Pluginが出力するJSONを解析する
   class Parser
     def call(json)
       @json = json
