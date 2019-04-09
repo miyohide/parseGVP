@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "parseGVP"
+
+parser = ParseGVP::Parser.new
+parser.call(ARGV[0])
+print parser.detail_result
