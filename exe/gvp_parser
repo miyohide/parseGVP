@@ -3,5 +3,5 @@
 require "parseGVP"
 
 parser = ParseGVP::Parser.new
-parser.call(ARGV[0])
+parser.call(File.open(ARGV[0]).read)
 print parser.detail_result
