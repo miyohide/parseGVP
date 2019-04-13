@@ -1,4 +1,9 @@
 # 文字列のクオートはどちらでも良い
 Style/StringLiterals:
   Enabled: false
+
+# 日本語コメントを許可
+Style/AsciiComments:
+  Enabled: false
+
 inherit_from: .rubocop_todo.yml
