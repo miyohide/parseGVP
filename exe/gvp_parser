@@ -2,6 +2,12 @@
 
 require "parseGVP"
 
-parser = ParseGVP::Parser.new
-parser.call(File.open(ARGV[0]).read)
-print parser.detail_result
+if ARGV.size == 1
+  parser = ParseGVP::Parser.new
+  parser.call(File.open(ARGV[0]).read)
+  print parser.detail_result
+else
+  puts "ParseGVP Argument Error."
+  puts
+  puts "Usage: gvp_parser [Gradle Versions Plugin JSON File]"
+end
