@@ -3,8 +3,8 @@
 require "parseGVP"
 
 if ARGV.size == 1
-  parser = ParseGVP::Parser.new
-  parser.call(File.open(ARGV[0]).read)
+  parser = ParseGVP::Parser.new(ARGV[0])
+  parser.call
   print parser.detail_result
 else
   puts "ParseGVP Argument Error."

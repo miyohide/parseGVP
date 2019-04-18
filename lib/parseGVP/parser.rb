@@ -4,8 +4,16 @@ require "json"
 module ParseGVP
   # Gradle Versions Pluginが出力するJSONを解析する
   class Parser
-    def call(json)
-      @json = json
+    def initialize(filename)
+      @filename = filename
+    end
+
+    def json_data
+      File.open(@filename).read
+    end
+
+    def call
+      @json = json_data
 
       parse_json
     end

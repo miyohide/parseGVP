@@ -1,13 +1,17 @@
 RSpec.describe ParseGVP do
+  DUMMY_FILE_NAME = "dummy"
+
   it "Output Simple Result" do
-    parser = ParseGVP::Parser.new
-    parser.call(GVP_JSON)
+    parser = ParseGVP::Parser.new(DUMMY_FILE_NAME)
+    allow(parser).to receive(:json_data).and_return(GVP_JSON)
+    parser.call
     expect(parser.simple_result).to eq("current: 2, exceeded: 0, outdated: 10, unresolved: 0")
   end
 
   it "Output Detail Result" do
-    parser = ParseGVP::Parser.new
-    parser.call(GVP_JSON)
+    parser = ParseGVP::Parser.new(DUMMY_FILE_NAME)
+    allow(parser).to receive(:json_data).and_return(GVP_JSON)
+    parser.call
     expect(parser.detail_result).to eq(<<RESULT)
 - current: 2
   - com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.21.0
