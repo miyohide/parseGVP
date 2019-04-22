@@ -8,7 +8,7 @@ RSpec.describe ParseGVP, "running from command line" do
   end
 
   context "only Filename" do
-    it "aaa" do
+    it "詳細な結果が出力されること" do
       output = run_command("spec/test_data/report.json")
       expect(output).to include "- current: 2\n"
     end
