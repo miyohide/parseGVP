@@ -10,8 +10,15 @@ RSpec.describe ParseGVP, "running from command line" do
   end
 
   context "ファイル名だけ指定している場合" do
-    it "詳細な結果が出力されること" do
+    it "簡潔な結果が出力されること" do
       output = run_command("spec/test_data/report.json")
+      expect(output).to include "current: 2, exceeded: 0, outdated: 10, unresolved: 0"
+    end
+  end
+
+  context "オプションとしてvを指定した場合" do
+    it "詳細な結果が出力されること" do
+      output = run_command("-v spec/test_data/report.json")
       expect(output).to include "- current: 2\n"
     end
   end
