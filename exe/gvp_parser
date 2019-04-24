@@ -7,7 +7,7 @@ OPTS = {}
 
 opt = OptionParser.new
 
-opt.on('-v') { |v| OPTS[:v] = v }
+opt.on('-v', "display detail result") { |v| OPTS[:v] = v }
 
 opt.parse!(ARGV)
 
@@ -22,5 +22,5 @@ if ARGV.size == 1
 else
   puts "ParseGVP Argument Error."
   puts
-  puts "Usage: gvp_parser [Gradle Versions Plugin JSON File]"
+  print opt.help
 end
