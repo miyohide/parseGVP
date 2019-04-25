@@ -1,26 +1,16 @@
 #!/usr/bin/env ruby
 
 require "parseGVP"
-require "optparse"
 
-OPTS = {}
-
-opt = OptionParser.new
-
-opt.on('-v', "display detail result") { |v| OPTS[:v] = v }
-
-opt.parse!(ARGV)
-
-if ARGV.size == 1
-  parser = ParseGVP::Parser.new(ARGV[0])
+begin
+  option = ParseGVP::Option.new
+  parser = ParseGVP::Parser.new(option.target)
   parser.call
-  if OPTS[:v]
+  if option.has?(:verbose)
     print parser.detail_result
   else
     print parser.simple_result
   end
-else
-  puts "ParseGVP Argument Error."
-  puts
-  print opt.help
+rescue
+  print "ParseGVP Argument Error.\n"
 end
