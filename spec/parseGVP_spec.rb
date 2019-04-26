@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 RSpec.describe ParseGVP do
   DUMMY_FILE_NAME = "dummy"
 
