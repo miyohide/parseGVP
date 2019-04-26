@@ -3,7 +3,7 @@
 require "parseGVP"
 
 begin
-  option = ParseGVP::Option.new
+  option = ParseGVP::Option.new(ARGV)
   parser = ParseGVP::Parser.new(option.target)
   parser.call
   if option.has?(:verbose)

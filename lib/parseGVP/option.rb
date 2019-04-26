@@ -2,11 +2,12 @@ require "optparse"
 
 module ParseGVP
   class Option
-    def initialize
+    def initialize(args)
+      @args = args
       @params = {}
       @option = OptionParser.new
       @option.on("-v", "show detail result") { |v| @params[:verbose] = v }
-      @option.parse!(ARGV)
+      @option.parse!(@args)
     end
 
     def has?(name)
@@ -14,10 +15,10 @@ module ParseGVP
     end
 
     def target
-      if ARGV.size != 1
+      if @args.size != 1
         raise "ParseGVP Argument Error."
       else
-        ARGV.first
+        @args.first
       end
     end
 
