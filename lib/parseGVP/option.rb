@@ -7,6 +7,11 @@ module ParseGVP
       @params = {}
       @option = OptionParser.new
       @option.on("-v", "show detail result") { |v| @params[:verbose] = v }
+      begin
+        @option.parse!(@args)
+      rescue OptionParser::InvalidOption
+        raise "ParseGVP Argument Error."
+      end
       @option.parse!(@args)
     end
 
