@@ -33,6 +33,15 @@ module ParseGVP
       results.delete_if(&:empty?).join("\n") + "\n"
     end
 
+    def warning_result
+      results = []
+      ["exceeded", "outdated", "unresolved"].each do |item|
+        results << count_line(item)
+        results << lib_details(item)
+      end
+      results.delete_if(&:empty?).join("\n") + "\n"
+    end
+
     def count_line(type)
       "- #{type}: #{@json[type]['count']}"
     end
