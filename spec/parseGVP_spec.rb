@@ -34,6 +34,27 @@ RSpec.describe ParseGVP do
 RESULT
   end
 
+  it "Output Warning Result" do
+    parser = ParseGVP::Parser.new(DUMMY_FILE_NAME)
+    allow(parser).to receive(:json_data).and_return(GVP_JSON)
+    parser.call
+    expect(parser.warning_result).to eq(<<RESULT)
+- exceeded: 0
+- outdated: 10
+  - [com.h2database:h2](http://www.h2database.com) (1.4.197 -> 1.4.199)
+  - [org.flywaydb:flyway-core](https://flywaydb.org) (5.2.3 -> 6.0.0-beta)
+  - [org.projectlombok:lombok](https://projectlombok.org) (1.18.4 -> 1.18.6)
+  - [org.springframework.boot:spring-boot-devtools](https://projects.spring.io/spring-boot/#/spring-boot-parent/spring-boot-devtools) (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - [org.springframework.boot:spring-boot-gradle-plugin](https://projects.spring.io/spring-boot/#/spring-boot-parent/spring-boot-tools/spring-boot-gradle-plugin) (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - [org.springframework.boot:spring-boot-starter-jdbc](https://projects.spring.io/spring-boot/#/spring-boot-parent/spring-boot-starters/spring-boot-starter-jdbc) (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - [org.springframework.boot:spring-boot-starter-security](https://projects.spring.io/spring-boot/#/spring-boot-parent/spring-boot-starters/spring-boot-starter-security) (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - [org.springframework.boot:spring-boot-starter-test](https://projects.spring.io/spring-boot/#/spring-boot-parent/spring-boot-starters/spring-boot-starter-test) (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - [org.springframework.boot:spring-boot-starter-thymeleaf](https://projects.spring.io/spring-boot/#/spring-boot-parent/spring-boot-starters/spring-boot-starter-thymeleaf) (2.1.1.RELEASE -> 2.1.3.RELEASE)
+  - [org.springframework.boot:spring-boot-starter-web](https://projects.spring.io/spring-boot/#/spring-boot-parent/spring-boot-starters/spring-boot-starter-web) (2.1.1.RELEASE -> 2.1.3.RELEASE)
+- unresolved: 0
+RESULT
+  end
+
   GVP_JSON = <<-JSON
 {
     "current": {
