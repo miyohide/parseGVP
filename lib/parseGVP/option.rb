@@ -7,6 +7,7 @@ module ParseGVP
       @params = {}
       @option = OptionParser.new
       @option.on("-v", "show detail result") { |v| @params[:verbose] = v }
+      @option.on("-w", "show warning result") { |v| @params[:warning] = v }
       begin
         @option.parse!(@args)
       rescue OptionParser::InvalidOption
