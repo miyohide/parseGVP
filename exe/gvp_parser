@@ -8,6 +8,8 @@ begin
   parser.call
   if option.has?(:verbose)
     print parser.detail_result
+  elsif option.has?(:warning)
+    print parser.warning_result
   else
     print parser.simple_result
   end
